@@ -1,0 +1,5 @@
+env/
+.venv/
+projects/**/env/
+.vscode
+

@@ -1,0 +1,38 @@
+{
+    "name": "KPAAM docker",
+    "privileged": true,
+    "remoteUser": "kpaam",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceFolder": "/home/kpaam/projects",
+    "mounts": [
+        "source=${localWorkspaceFolder}/projects,target=/home/kpaam/projects,type=bind"
+    ],
+    "initializeCommand": "xhost +local:docker",
+    "runArgs": [
+        "--net=host", // Use host network for easier ROS/GUI communication
+        "-e",
+        "DISPLAY=${env:DISPLAY}", // Pass the host's DISPLAY variable
+        "-v",
+        "/tmp/.X11-unix:/tmp/.X11-unix" // Mount the X11 socket
+    ],
+    "containerEnv": {
+        "DISPLAY": "${env:DISPLAY}"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "llvm-vs-code-extensions.vscode-clangd",
+                "ms-vscode.cmake-tools",
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.jupyter-keymap",
+                "ms-toolsai.jupyter-renderers",
+                "yzhang.markdown-all-in-one",
+                "vscode-icons-team.vscode-icons"
+            ]
+        }
+    },
+    "postCreateCommand": "cd ~/projects"
+}
