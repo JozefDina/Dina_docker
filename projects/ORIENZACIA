@@ -1,0 +1,56 @@
+4t3dofArm.py
+„pozícia z uhlov“
+* forward kinematics (FK)
+* zadané uhly → vypočítaš pozíciu robota
+* skladáš transformačné matice T1 @ T2 @ T3
+* použi keď: „vypočítaj pozíciu“, „zmeň uhly“, „zobraz frame“
+
+dls_method.py
+„ísť do bodu“
+* inverse kinematics (IK) pomocou DLS
+* zadaná pozícia → nájdeš uhly kĺbov
+* iterácia: error = target - current
+* použi keď: „robot má ísť do bodu“
+
+IK_diff.py
+„trajektória (body)“
+* trajektória cez body (lineárna)
+* start → end → np.linspace → veľa bodov
+* pre každý bod voláš IK
+* použi keď: „robot ide po čiare“, „trajektória medzi bodmi“
+
+IK_diff2.py
+„trajektória (plynulý pohyb)“
+* differential IK (cez rýchlosť + Jacobian)
+* desired_velocity → dq = J_pinv @ v
+* robot sa hýbe plynulo (napr. kružnica)
+* použi keď: „robot sa má hýbať“, „kružnica“, „velocity“
+
+5tworkspace.py
+„workspace“
+* workspace robota
+* skúša všetky kombinácie uhlov (for loop)
+* kreslí body kam robot dosiahne
+* použi keď: „vykresli workspace“, „kam robot dosiahne“
+
+5t2dofDH.py
+
+* forward kinematics cez DH parametre
+* skladáš T = T @ T_i z tabuľky
+* porovnanie s PyBullet
+* použi keď: „máš DH tabuľku“, „DH výpočet“
+
+5t7dofDH.py (voliteľné)
+„DH tabuľka“
+* to isté ako 5t2dofDH.py, ale pre veľký robot (7 DOF)
+* viac kĺbov, rovnaký princíp
+* použi keď: „DH pre Panda/KUKA robot“
+
+IK_pcc.py (voliteľné)
+
+* inverse kinematics pre continuum robot (PCC)
+* nepracuje s uhlami, ale s dĺžkami aktuátorov
+* používa actuator Jacobian
+* použi keď: „continuum robot“, „PCC model“
+
+
