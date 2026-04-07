@@ -4,6 +4,13 @@ import time
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 
+# theta1, theta2, theta3 = uhly kĺbov
+# L1, L2, L3 = dĺžky článkov
+# T1, T2, T3 = transformácie jednotlivých článkov
+# T_link1, T_link2, T_link3 = výsledné transformácie voči svetu
+# link3_position = pozícia konca robota
+# @ = maticové násobenie
+
 # Táto funkcia zoberie homogénnu transformačnú maticu T
 # a vytiahne z nej:
 # 1. pozíciu (translation)
