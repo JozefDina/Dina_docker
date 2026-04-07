@@ -13,7 +13,7 @@ dls_method.py
 * použi keď: „robot má ísť do bodu“
 
 IK_diff.py
-„trajektória (body)“
+„robot ide po čiare“
 * trajektória cez body (lineárna)
 * start → end → np.linspace → veľa bodov
 * pre každý bod voláš IK
