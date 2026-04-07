@@ -20,7 +20,7 @@ IK_diff.py
 * použi keď: „robot ide po čiare“, „trajektória medzi bodmi“
 
 IK_diff2.py
-„trajektória (plynulý pohyb)“
+„trajektória („robot sa má hýbať“, „kružnica“, „velocity“)“
 * differential IK (cez rýchlosť + Jacobian)
 * desired_velocity → dq = J_pinv @ v
 * robot sa hýbe plynulo (napr. kružnica)
