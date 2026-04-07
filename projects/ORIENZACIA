@@ -53,4 +53,133 @@ IK_pcc.py (voliteľné)
 * používa actuator Jacobian
 * použi keď: „continuum robot“, „PCC model“
 
+1. AKÝ JE TYP ÚLOHY?
+
+FK:
+→ mám uhly → chcem pozíciu
+
+IK:
+→ mám pozíciu → chcem uhly
+
+DIFF IK:
+→ mám rýchlosť → chcem rýchlosti kĺbov
+
+WORKSPACE:
+→ skúšam všetky kombinácie uhlov
+
+---
+
+2. KTORÝ SÚBOR OTVORIŤ?
+
+---
+
+FK → 4t3dofArm.py
+
+IK (ísť do bodu) → dls_method.py
+
+trajektória (čiara) → IK_diff.py
+
+trajektória (kruh, pohyb) → IK_diff2.py
+
+workspace → 5tworkspace.py
+
+---
+
+3. ČO ZMENIŤ?
+
+---
+
+IK:
+target_position = [x, y, z]
+
+DIFF IK:
+vx, vy, vz
+
+TRAJEKTÓRIA:
+start, end
+
+FK:
+theta1, theta2, theta3
+
+WORKSPACE:
+theta_range
+
+---
+
+4. NAJDÔLEŽITEJŠIE RIADKY
+
+---
+
+FK:
+T = T1 @ T2 @ T3
+
+IK:
+error = target - current
+
+DIFF IK:
+dq = J_pinv @ desired_velocity
+
+pozícia z T:
+pos = T[:3, 3]
+
+---
+
+5. JEDNODUCHÉ VYSVETLENIE
+
+---
+
+Jacobian:
+→ ako pohyb kĺbov ovplyvňuje koniec robota
+
+dq:
+→ rýchlosti kĺbov
+
+desired_velocity:
+→ ako sa má hýbať koniec robota
+
+error:
+→ rozdiel medzi cieľom a aktuálnou pozíciou
+
+---
+
+6. NAJČASTEJŠIE CHYBY
+
+---
+
+❌ zlé joint indexy
+❌ zamenené radiany/stupne
+❌ zlé poradie matíc (T1 @ T2)
+❌ veľké alpha → robot blbne
+
+---
+
+7. RÝCHLY POSTUP NA ZÁPOČTE
+
+---
+
+1. zisti typ úlohy (FK / IK / trajektória)
+2. otvor správny súbor
+3. zmeň 2–3 riadky
+4. spusti
+5. hotovo
+
+---
+
+8. AK ZABUDNEŠ VŠETKO
+
+---
+
+nájdi v kóde:
+
+error = target - current
+
+→ to je IK
+
+dq = J_pinv @ ...
+
+→ to je diff IK
+
+T = T1 @ T2 ...
+
+→ to je FK
 
